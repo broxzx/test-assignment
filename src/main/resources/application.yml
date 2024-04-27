@@ -8,6 +8,8 @@ spring:
     name: test-assignment
 
 #variables
+user:
+  age: 18
 
 #logging
 logging:
