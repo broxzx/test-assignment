@@ -1,0 +1,31 @@
+#server
+server:
+  port: 8080
+
+#spring
+spring:
+  application:
+    name: test-assignment
+
+#variables
+user:
+  age: 18
+
+#logging
+logging:
+  level:
+    root: info
+    web: info
+    sql: info
+
+#actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
