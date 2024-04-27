@@ -29,14 +29,14 @@ public class UserService {
     }
 
     public ResponseUserDto getUserResponseById(String userId) {
-        UserEntity userEntity = this.getUserEntityById(userId);
+        UserEntity userEntity = getUserEntityById(userId);
 
         return userMapper
                 .makeUserResponseDto(userEntity);
     }
 
     public ResponseUserDto createUserEntity(RequestUserDto requestUserDto) {
-        UserEntity userEntity = this.makeUserEntityFromRequestUser(requestUserDto);
+        UserEntity userEntity = makeUserEntityFromRequestUser(requestUserDto);
 
         userRepository.save(userEntity);
 
@@ -45,9 +45,9 @@ public class UserService {
     }
 
     public ResponseUserDto updateUserEntity(String userId, RequestUserDto requestUserDto) {
-        UserEntity userEntity = this.getUserEntityById(userId);
+        UserEntity userEntity = getUserEntityById(userId);
 
-        UserEntity updatedUserEntity = this.makeUserEntityFromRequestUser(requestUserDto);
+        UserEntity updatedUserEntity = makeUserEntityFromRequestUser(requestUserDto);
         updatedUserEntity.setId(userEntity.getId());
 
         userRepository.save(updatedUserEntity);
@@ -55,6 +55,7 @@ public class UserService {
     }
 
     public String deleteUserEntity(String userId) {
+        getUserEntityById(userId);
         userRepository.deleteById(userId);
 
         return "user with id '%s' was deleted".formatted(userId);
